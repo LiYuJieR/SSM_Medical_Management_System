@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyujie.dao.DoctorUserDao">
+    <select id="selectAllDoctors" resultType="DoctorUser">
+        select iddoctoruser,username,password,phone,email,departmentid,gradeid,detail from doctoruser
+    </select>
+
+    <select id="selectDoctorById" resultType="DoctorUser">
+        select iddoctoruser,username,password,phone,email,departmentid,gradeid,detail from doctoruser
+            where iddoctoruser=#{id}
+    </select>
+
+    <select id="selectDoctorByName" resultType="DoctorUser">
+        select * from doctoruser where username=#{name}
+    </select>
+
+    <select id="selectDoctorByEmail" resultType="DoctorUser">
+        select * from doctoruser where email=#{email}
+    </select>
+
+    <select id="selectDoctorByPhone" resultType="DoctorUser">
+        select * from doctoruser where phone=#{phone}
+    </select>
+
+    <insert id="insertDoctorUser">
+        insert into doctoruser(username,password,phone,email,departmentid,gradeid,detail)
+        values(#{username},#{password},#{phone},#{email},#{departmentid},#{gradeid},#{detail})
+    </insert>
+
+    <delete id="deleteDoctorUserById">
+        delete from doctoruser where iddoctoruser=#{id}
+    </delete>
+
+    <update id="updateDoctor">
+        update doctoruser set username=#{username},phone=#{phone},email=#{email},departmentid=#{departmentid},
+                              gradeid=#{gradeid},detail=#{detail} where iddoctoruser=#{id}
+    </update>
+
+    <select id="selectDepartmentNameByDepartmentId" resultType="String">
+        select namedepartment from department where iddepartment=#{departmentId}
+    </select>
+
+    <select id="selectGradeNameByGradeId" resultType="String">
+        select GradeName from doctorgrade where idDoctorGrade=#{gradeId}
+    </select>
+
+
+
+</mapper>

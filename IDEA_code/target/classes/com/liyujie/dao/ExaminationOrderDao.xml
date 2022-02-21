@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyujie.dao.ExaminationOrderDao">
+    <select id="selectExaminationOrderById" resultType="ExaminationOrder">
+        select * from examination_order where id=#{id}
+    </select>
+
+    <select id="selectExaminationOrderByDId" resultType="ExaminationOrder">
+        select * from examination_order where Did=#{Did}
+    </select>
+
+    <select id="selectExaminationOrderByPId" resultType="ExaminationOrder">
+        select * from examination_order where Pid=#{Pid}
+    </select>
+
+    <select id="selectExaminationOrderByPIdNotPaid" resultType="ExaminationOrder">
+        select * from examination_order where Pid=#{Pid} and isPaid=false
+    </select>
+
+    <select id="selectExaminationOrderByEId" resultType="ExaminationOrder">
+        select * from examination_order where Eid=#{Eid}
+    </select>
+
+    <insert id="insertExaminationOrder">
+        insert into examination_order(Pid,Did,Eid,isPaid) values(#{Pid},#{Did},#{Eid},#{isPaid})
+    </insert>
+
+    <update id="updateExaminationOrderToPaidById">
+        update examination_order set isPaid=true where id=#{id}
+    </update>
+</mapper>

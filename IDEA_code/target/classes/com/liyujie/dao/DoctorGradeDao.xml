@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyujie.dao.DoctorGradeDao">
+    <select id="selectAllGrades" resultType="DoctorGrade">
+        select * from doctorgrade
+    </select>
+
+    <select id="selectGradeNameById" resultType="String">
+        select GradeName from doctorgrade where idDoctorGrade=#{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyujie.dao.RegistrationDao">
+    <select id="selectRegistrationById" resultType="Registration">
+        select * from registration where id=#{id};
+    </select>
+
+    <select id="selectRegistrationByDid" resultType="Registration">
+        select * from registration where Did=#{Did}
+    </select>
+
+    <select id="selectRegistrationByPid" resultType="Registration">
+        select * from registration where Pid=#{Pid}
+    </select>
+
+    <select id="selectAllRegistrationNotRegisted" resultType="Registration">
+        select * from registration where isRegisted=false
+    </select>
+
+    <select id="selectRegistrationNotRegistedByDepartmentId" resultType="Registration">
+        select r.id,r.Did,r.Pid,r.day,r.beginTime,r.endTime,r.isRegisted
+        from registration as r join doctoruser as d
+        on d.iddoctoruser=r.Did
+        where r.isRegisted=false And d.departmentid=#{departmentid}
+    </select>
+
+    <insert id="insertRegistration">
+        insert into registration(id,Did,Pid,day,beginTime,endTime,isRegisted)
+        values(#{id},#{Did},#{Pid},#{day},#{beginTime},#{endTime},#{isRegisted})
+    </insert>
+
+    <update id="updateRegistrationPid">
+        update registration set Pid=#{Pid},isRegisted=#{isRegist} where id=#{id}
+    </update>
+
+    <delete id="deleteRegistrationById">
+        delete from registration where id=#{id}
+    </delete>
+
+</mapper>

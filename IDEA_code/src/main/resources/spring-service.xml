@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <import resource="classpath:spring-dao.xml"></import>
+    <context:component-scan base-package="com.liyujie.service"></context:component-scan>
+
+    <bean id="adminUserService" class="com.liyujie.service.impl.AdminUserServiceImpl" autowire="byType"></bean>
+
+    <bean id="doctorUserService" class="com.liyujie.service.impl.DoctorUserServiceImpl" autowire="byType"></bean>
+
+    <bean id="departmentService" class="com.liyujie.service.impl.DepartmentServiceImpl" autowire="byType"></bean>
+
+    <bean id="doctorGradeService" class="com.liyujie.service.impl.DoctorGradeServiceImpl" autowire="byType"/>
+
+    <bean id="registrationService" class="com.liyujie.service.impl.RegistrationServiceImpl" autowire="byType"/>
+
+    <bean id="patientUserService" class="com.liyujie.service.impl.PatientUserServiceImpl" autowire="byType"/>
+
+    <bean id="medicalExaminationService" class="com.liyujie.service.impl.MedicalExaminationServiceImpl" autowire="byType"/>
+
+    <bean id="examinationOrderService" class="com.liyujie.service.impl.ExaminationOrderServiceImpl" autowire="byType"/>
+
+    <bean id="messageService" class="com.liyujie.service.impl.MessageServiceImpl">
+        <property name="messageDao" ref="messageDao"></property>
+    </bean>
+    <!--声明事务管理-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+</beans>

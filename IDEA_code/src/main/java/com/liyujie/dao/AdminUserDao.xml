@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyujie.dao.AdminUserDao">
+    <resultMap id="map" type="AdminUser">
+        <id  property="id" column="idAdminUser" javaType="Integer" jdbcType="INTEGER"/>
+        <result property="username" column="nameAdminUser" javaType="String" jdbcType="VARCHAR"/>
+        <result property="password" column="passwordAdminUser" javaType="String" jdbcType="VARCHAR"/>
+
+    </resultMap>
+    <select id="selectUserByName" resultMap="map">
+        select * from adminuser where nameAdminUser=#{name}
+    </select>
+
+    <update id="updateUserPasswordByName">
+        update adminuser set passwordAdminUser=#{newPassword,jdbcType=VARCHAR}
+            where nameAdminUser=#{name,jdbcType=VARCHAR}
+    </update>
+
+
+
+</mapper>

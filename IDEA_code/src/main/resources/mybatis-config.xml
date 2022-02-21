@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="jdbc.properties"></properties>
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="AdminUser" type="com.liyujie.entity.AdminUser"/>
+        <typeAlias alias="DoctorUser" type="com.liyujie.entity.DoctorUser"/>
+        <typeAlias alias="Department" type="com.liyujie.entity.Department"/>
+        <typeAlias alias="DoctorGrade" type="com.liyujie.entity.DoctorGrade"/>
+        <typeAlias alias="Registration" type="com.liyujie.entity.Registration"/>
+        <typeAlias alias="PatientUser" type="com.liyujie.entity.PatientUser"/>
+        <typeAlias alias="MedicalExamination" type="com.liyujie.entity.MedicalExamination"/>
+        <typeAlias alias="ExaminationOrder" type="com.liyujie.entity.ExaminationOrder"/>
+    </typeAliases>
+
+
+    <mappers>
+        <mapper class="com.liyujie.dao.AdminUserDao"/>
+        <mapper class="com.liyujie.dao.DoctorUserDao"/>
+        <mapper class="com.liyujie.dao.DepartmentDao"/>
+        <mapper class="com.liyujie.dao.DoctorGradeDao"/>
+        <mapper class="com.liyujie.dao.RegistrationDao"/>
+        <mapper class="com.liyujie.dao.PatientUserDao"/>
+        <mapper class="com.liyujie.dao.MedicalExaminationDao"/>
+        <mapper class="com.liyujie.dao.ExaminationOrderDao"/>
+        <!--mapper resource="classpath:mapper/AdminUserDao.xml"/-->
+    </mappers>
+
+</configuration>

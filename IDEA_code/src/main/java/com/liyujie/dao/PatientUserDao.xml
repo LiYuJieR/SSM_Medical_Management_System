@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyujie.dao.PatientUserDao">
+    <select id="selectPatientById" resultType="PatientUser">
+        select * from patient where id=#{id}
+    </select>
+
+    <select id="selectPatientByPhone" resultType="PatientUser">
+        select * from patient where phone=#{phone}
+    </select>
+
+    <select id="selectPatientByDid" resultType="PatientUser">
+        select * from patient where Did=#{Did}
+    </select>
+
+    <insert id="insertPatient">
+        insert into patient(id,name,password,gender,age,account,phone,detail,Did)
+        values(#{id},#{name},#{password},#{gender},#{age},#{account},#{phone},#{detail},#{Did})
+    </insert>
+
+    <update id="updatePatient">
+        update patient set name=#{name},password=#{password},gender=#{gender},age=#{age},account=#{account},
+                           phone=#{phone},detail=#{detail},Did=#{Did} where id=#{id}
+    </update>
+
+    <update id="updatePatientDoctorByDoctorId">
+        update patient set Did=#{Did} where id=#{id}
+    </update>
+
+    <delete id="deletePatientById">
+        delete from patient where id=#{id}
+    </delete>
+
+</mapper>
